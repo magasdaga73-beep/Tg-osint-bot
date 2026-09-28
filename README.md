@@ -1,62 +1,28 @@
-# Public OSINT Telegram Bot
+# PUBLIC OSINT Telegram Bot v2
 
-Безопасный Telegram-бот для навигации по публичным источникам.
+Telegram-бот для навигации по публичному интернет-поиску по номеру телефона и ФИО.
 
 ## Возможности
-- /start и inline-меню
-- поиск по нику, имени или домену через публичные поисковики
-- ссылки на Google, Bing и DuckDuckGo
-- локальная история последних 10 запросов
-- SQLite-база `bot.db`
-- блокировка запросов, связанных с чувствительными персональными данными и утечками
+- 📱 поиск по номеру телефона;
+- 👤 поиск по имени/фамилии или полному ФИО;
+- Google, Bing и DuckDuckGo;
+- нормализация российского номера 8XXXXXXXXXX → 7XXXXXXXXXX;
+- история последних 10 запросов в SQLite;
+- Telegram-меню.
 
-Бот не подключается к закрытым или слитым базам и не извлекает номера телефонов,
-адреса, паспортные данные, банковские данные и т.п.
+Бот не подключается к слитым/закрытым базам, не обходит авторизацию и не извлекает скрытые персональные данные. Он только формирует ссылки на обычный публичный веб-поиск.
 
-## 1. Создать бота
-В Telegram открой `@BotFather`.
-Выполни `/newbot`, задай имя и username.
-Скопируй выданный токен.
+## Render
+Build Command:
+`pip install -r requirements.txt`
 
-## 2. Установить Python
-Нужен Python 3.10+.
+Start Command:
+`python bot.py`
 
-## 3. Установка
-В папке проекта:
+Environment Variable:
+KEY = `BOT_TOKEN`
+VALUE = токен Telegram-бота от @BotFather.
 
-    python -m venv .venv
+Не добавляй токен в GitHub или bot.py.
 
-Windows:
-    .venv\Scripts\activate
-
-Linux/macOS:
-    source .venv/bin/activate
-
-Затем:
-
-    pip install -r requirements.txt
-
-## 4. Задать токен
-
-Linux/macOS:
-    export BOT_TOKEN="ТОКЕН_ОТ_BOTFATHER"
-
-Windows PowerShell:
-    $env:BOT_TOKEN="ТОКЕН_ОТ_BOTFATHER"
-
-## 5. Запуск
-
-    python bot.py
-
-При первом запуске автоматически создастся `bot.db`.
-
-## 6. Важно
-Не публикуй токен бота в GitHub, чатах или скриншотах.
-Если токен случайно раскрыт — перевыпусти его через BotFather.
-
-## Структура
-    tg_osint_bot/
-      bot.py
-      requirements.txt
-      README.md
-      bot.db
+При запуске создаётся `bot.db`.
